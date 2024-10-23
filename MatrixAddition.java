@@ -4,13 +4,13 @@ public class MatrixAddition {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
-        int rows = 2;
-        int cols = 2;
+        int rows = 3;
+        int cols = 3;
 
         int[][] A = new int[rows][cols];
         int[][] B = new int[rows][cols];
 
-        System.out.println("Enter the elements of matrix A (2x2):");
+        System.out.println("Enter the elements of matrix A (3x3):");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 System.out.print("A[" + i + "][" + j + "]: ");
