@@ -1,12 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author dsu-29
- */
 class Node {
     int data;
     Node address; 
@@ -18,21 +9,43 @@ class Node {
 }
 
 public class LinkedList {
-    public static void main(String[] args) {
-        Node node1 = new Node(1);
-        Node node2 = new Node(2);
-        Node node3 = new Node(3);
-        Node node4 = new Node(4);
+    Node head, tail;
+    int size;
 
-        node1.address = node2;
-        node2.address = node3;
-        node3.address = node4;
-        node4.address = null;
-
-        System.out.print(node1.data);
-        System.out.print(node1.address.data);
-        System.out.print(node1.address.address.data);
-        System.out.print(node1.address.address.address.data);
+    public LinkedList() {
+        head = tail = null;
+        size = 0;
     }
-   
+
+    public void add(int data) {
+        Node n = new Node(data);
+        if (head == null) {
+            head = tail = n;
+        } else {
+            tail.address = n;
+            tail = n;
+        }
+       
+    }
+
+ 
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.printList();
+  
+    }
+   public void printList() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.address;
+        }
+        System.out.println();
+    }
+
 }
+
