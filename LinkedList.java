@@ -25,7 +25,7 @@ public class LinkedList {
             tail.address = n;
             tail = n;
         }
-       
+       size++;
     }
 
  
@@ -44,7 +44,7 @@ public class LinkedList {
             System.out.print(current.data + " ");
             current = current.address;
         }
-        System.out.println();
+        System.out.println("\n Size Of List "+size);
     }
 
 }
