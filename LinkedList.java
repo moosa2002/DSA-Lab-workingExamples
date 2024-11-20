@@ -1,51 +1,62 @@
-class Node {
-    int data;
-    Node address; 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.mavenproject1;
 
-    public Node(int data) {
-        this.data = data;
-        this.address = null; 
-    }
-}
+/**
+ *
+ * @author dsu-29
+ */
+
 
 public class LinkedList {
-    Node head, tail;
-    int size;
+    private Node front;
+    private Node rear;
 
-    public LinkedList() {
-        head = tail = null;
-        size = 0;
+    static class Node {
+        public int data;
+        public Node next;
+
+        public Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
     }
 
-    public void add(int data) {
-        Node n = new Node(data);
-        if (head == null) {
-            head = tail = n;
+    public boolean isEmpty() {
+        return (front == null);
+    }
+
+    public void insertLast(int new_data) {
+        Node new_node = new Node(new_data);
+        if (isEmpty()) {
+            front = new_node;
+            rear = new_node;
         } else {
-            tail.address = n;
-            tail = n;
+            rear.next = new_node;
+            rear = new_node;
         }
-       size++;
     }
 
- 
-    public static void main(String[] args) {
-        LinkedList list = new LinkedList();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.printList();
-  
+    public int deleteFirst() {
+        if (isEmpty()) {
+            throw new RuntimeException("Queue is empty");
+        }
+        int temp = front.data;
+        front = front.next;
+        if (front == null) {
+            rear = null;
+        }
+        return temp;
     }
-   public void printList() {
-        Node current = head;
+
+    void displayList() {
+        System.out.println("=== Displaying Elements of DEQ ===");
+        Node current = front;
         while (current != null) {
-            System.out.print(current.data + " ");
-            current = current.address;
+            System.out.println(current.data);
+            current = current.next;
         }
-        System.out.println("\n Size Of List "+size);
     }
-
 }
-
